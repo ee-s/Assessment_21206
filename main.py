@@ -2,10 +2,8 @@
 #Eliza smith (21206@rangiorahigh.school.nz)
 #Phython basics quiz for year 9's
 score = 0
-
 import time 
 t=1 
-
 
 def getAnswer(question): 
   """defines function to ensure all answers are intergers between 1 and 4"""
@@ -19,8 +17,7 @@ def getAnswer(question):
       print("Enter a number between 1 and 4 in answer(eg. 3) try again ")
   return answer
 
-
-def finalTryAgain(userName):
+def finalTryAgain(userName,score):
   playAgain=""
   while playAgain != "yes" and playAgain != "no":
       playAgain=input("Would you like to play again? (Yes or No) ".lower())
@@ -28,9 +25,13 @@ def finalTryAgain(userName):
         print("Game Over, goodbye",userName)
         return False
       if playAgain== ("yes"):
-        print("Okay",userName,"...")   
-        return True
+        if score >3:
+          print("Very well",userName,"...")   
 
+        if score <4:
+          print("A good choice considering your score",userName,"...")   
+          
+        return True
 
 correctAns = ([1, 2, 4, 1, 3, 3])
 questions = ([
@@ -124,31 +125,12 @@ while play==True:
   percent= int(score/listQuestion *100)
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
-     
     
-      playAgain=input("Would you like to play again? (Yes or No) ".lower())
-      if playAgain == ("no"):
-        print("Game Over, goodbye",userName)
-        play=False
-      if playAgain == ("yes"):
-        print("Very well",userName)
-
-      play=finalTryAgain(userName)
-              
-
+      play=finalTryAgain(userName,score)      
         
   if score <4:
       print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
       
-      playAgain=input("Would you like to play again? (Yes or No) ".lower())
-      if playAgain == ("no"):
-        print("Game Over, goodbye",userName)
-        play=False
-      if playAgain == ("yes"):
-        print("A good choice considering you score",userName,"...")
+
       
-      play=finalTryAgain(userName)
-      
- 
-                
-              
+      play=finalTryAgain(userName,score)    
