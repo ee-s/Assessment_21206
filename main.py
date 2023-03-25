@@ -6,6 +6,7 @@ score = 0
 import time 
 t=1 
 
+
 def getAnswer(question): 
   """defines function to ensure all answers are intergers between 1 and 4"""
   validInput = False # A boolean which will loop until our condistion is met
@@ -19,9 +20,16 @@ def getAnswer(question):
   return answer
 
 
-#def finalAnswer():
- # if playAgain !="yes" &  playAgain"no"
-  
+def finalTryAgain(userName):
+  playAgain=""
+  while playAgain != "yes" and playAgain != "no":
+      playAgain=input("Would you like to play again? (Yes or No) ".lower())
+      if playAgain == ("no"):
+        print("Game Over, goodbye",userName)
+        return False
+      if playAgain== ("yes"):
+        print("Okay",userName,"...")   
+        return True
 
 
 correctAns = ([1, 2, 4, 1, 3, 3])
@@ -86,8 +94,8 @@ print("Thank you", userName + ",")
 time.sleep (t)
 yearLvl = input(
   "One last question before we begin the test are you a year 9? (yes or no) ").lower()
-  
-play=True
+
+play=True 
 while play==True:
   score = 0
   
@@ -116,6 +124,8 @@ while play==True:
   percent= int(score/listQuestion *100)
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
+     
+    
       playAgain=input("Would you like to play again? (Yes or No) ".lower())
       if playAgain == ("no"):
         print("Game Over, goodbye",userName)
@@ -123,31 +133,22 @@ while play==True:
       if playAgain == ("yes"):
         print("Very well",userName)
 
-      while playAgain != "yes" and playAgain != "no":
-          playAgain=input("Would you like to play again? (Yes or No) ".lower())
-          if playAgain == ("no"):
-            print("Game Over, goodbye",userName)
-            play=False
-          if playAgain== ("yes"):
-            print("Okay",userName,"...")
+      play=finalTryAgain(userName)
               
 
         
   if score <4:
       print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
+      
       playAgain=input("Would you like to play again? (Yes or No) ".lower())
       if playAgain == ("no"):
-          print("Game Over, goodbye",userName)
-          play=False
+        print("Game Over, goodbye",userName)
+        play=False
       if playAgain == ("yes"):
-          print("A good choice considering you score",userName,"...")
-
-      while playAgain != "yes" and playAgain != "no":
-        playAgain=input("Would you like to play again? (Yes or No) ".lower())
-        if playAgain == ("no"):
-          print("Game Over, goodbye",userName)
-          play=False
-        if playAgain== ("yes"):
-          print("Okay",userName,"...")
-              
+        print("A good choice considering you score",userName,"...")
+      
+      play=finalTryAgain(userName)
+      
+ 
+                
               
