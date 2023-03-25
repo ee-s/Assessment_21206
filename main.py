@@ -14,23 +14,21 @@ def getAnswer(question):
       if answer > 0 and answer < 5:
         validInput = True
     except ValueError:
-      print("Enter a number between 1 and 4 in answer(eg. 3) try again ")
+      print("Enter a number between 1 and 4 in answer(eg. 3) try again \n")
   return answer
 
 def finalTryAgain(userName,score):
   playAgain=""
   while playAgain != "yes" and playAgain != "no":
-      playAgain=input("Would you like to play again? (Yes or No) ".lower())
+      playAgain=input("Would you like to play again? (Yes or No) \n".lower())
       if playAgain == ("no"):
         print("Game Over, goodbye",userName)
         return False
       if playAgain== ("yes"):
         if score >3:
           print("Very well",userName,"...")   
-
         if score <4:
-          print("A good choice considering your score",userName,"...")   
-          
+          print("A good choice considering your score",userName,"... \n")    
         return True
 
 correctAns = ([1, 2, 4, 1, 3, 3])
@@ -41,6 +39,7 @@ Q1. Was python named after a snake?
 2. Yes 
 3. Indirectly 
 4. It was named after a board game 
+
 ''',
   
 '''
@@ -49,6 +48,7 @@ Q2. Which language is older python or java?
 2. Python is older
 3. They are the exact same age
 4. This information is unknown
+
 ''', 
   
 '''
@@ -57,6 +57,7 @@ Q3. What is the opposite of input?
 2. Outtake 
 3. Putout 
 4. Output
+
 ''', 
 
 '''
@@ -65,6 +66,7 @@ Q4. What is a loop?
 2. A function that can draw a circle
 3. A process which does not repeats
 4. It is not used in python
+
 ''',
   
 '''
@@ -73,6 +75,7 @@ Q5. Is Python one of the most popular languages used?
 2. No it is very difficult to learn
 3. Yes, it's easy to learn
 4. It is not known
+
 ''', 
   
 '''
@@ -81,32 +84,33 @@ Q6. Is Python indentation specific?
 2. Yes, it is the only language which has this
 3. Yes, it is also present in many other languages
 4. Nope this is not a thing
+
 '''
 ])
 
 print(
   '''Hello, this is a quiz for year 9's with an interest in computer science. 
-The quiz will assess your level of knowledge regarding Python 3.\n''')
+The quiz will assess your level of knowledge regarding Python \n''')
 time.sleep (t)
 
 userName = str(input("First of all, what is your name? \n"))
 
-print("Thank you", userName + ",")
+print("Thank you", userName + ", \n")
 time.sleep (t)
 yearLvl = input(
-  "One last question before we begin the test are you a year 9? (yes or no) ").lower()
+  "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
 
 play=True 
 while play==True:
   score = 0
   
   while yearLvl != "yes" and yearLvl != "no":
-    yearLvl = input("Please answer with either Yes or No, are you a year 9? ").lower()
+    yearLvl = input("Please answer with either Yes or No, are you a year 9? \n").lower()
     if yearLvl == ("yes"):
       print("good")
     
     if yearLvl == ("no"):
-      print("You are not the correct demograthic for this quiz")
+      print("You are not the correct demograthic for this quiz \n")
       exit()
   
   listQuestion = 0
@@ -115,7 +119,7 @@ while play==True:
     if answer == correctAns[listQuestion]:
       print("correct")
       score += 1
-      print("score: [",score,"]")
+      print("score: [",score,"]\n")
   
     else:
       print("incorrect")
@@ -124,13 +128,11 @@ while play==True:
 
   percent= int(score/listQuestion *100)
   if score >3:
-      print("Well done you have completed the test, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
+      print("Well done you have completed the test, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly. \n")
     
       play=finalTryAgain(userName,score)      
         
   if score <4:
-      print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
-      
-
+      print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly. \n")
       
       play=finalTryAgain(userName,score)    
