@@ -19,6 +19,11 @@ def getAnswer(question):
   return answer
 
 
+#def finalAnswer():
+ # if playAgain !="yes" &  playAgain"no"
+  
+
+
 correctAns = ([1, 2, 4, 1, 3, 3])
 questions = ([
 '''
@@ -81,15 +86,13 @@ print("Thank you", userName + ",")
 time.sleep (t)
 yearLvl = input(
   "One last question before we begin the test are you a year 9? (yes or no) ").lower()
-
-
   
 play=True
 while play==True:
   score = 0
   
   while yearLvl != "yes" and yearLvl != "no":
-    yearLvl = input("Please answer with either Yes or No, are you a year 9?" ).lower()
+    yearLvl = input("Please answer with either Yes or No, are you a year 9? ").lower()
     if yearLvl == ("yes"):
       print("good")
     
@@ -114,14 +117,37 @@ while play==True:
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
       playAgain=input("Would you like to play again? (Yes or No) ".lower())
-      if playAgain !=("yes"):
+      if playAgain == ("no"):
         print("Game Over, goodbye",userName)
         play=False
+      if playAgain == ("yes"):
+        print("Very well",userName)
+
+      while playAgain != "yes" and playAgain != "no":
+          playAgain=input("Would you like to play again? (Yes or No) ".lower())
+          if playAgain == ("no"):
+            print("Game Over, goodbye",userName)
+            play=False
+          if playAgain== ("yes"):
+            print("Okay",userName,"...")
+              
+
+        
   if score <4:
       print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",listQuestion,"questions. Resulting in",percent,"% of the test being answered correctly.")
       playAgain=input("Would you like to play again? (Yes or No) ".lower())
-      if playAgain !=("yes"):
-        print("Game Over, goodbye",userName)
-        play=False
-    
-     
+      if playAgain == ("no"):
+          print("Game Over, goodbye",userName)
+          play=False
+      if playAgain == ("yes"):
+          print("A good choice considering you score",userName,"...")
+
+      while playAgain != "yes" and playAgain != "no":
+        playAgain=input("Would you like to play again? (Yes or No) ".lower())
+        if playAgain == ("no"):
+          print("Game Over, goodbye",userName)
+          play=False
+        if playAgain== ("yes"):
+          print("Okay",userName,"...")
+              
+              
