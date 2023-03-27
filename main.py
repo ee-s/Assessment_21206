@@ -1,6 +1,6 @@
 #13/03/2023
 #Eliza smith (21206@rangiorahigh.school.nz)
-#Phython basics quiz for year 9's
+#Python basics quiz for year 9's
 score = 0
 import time 
 TIME_CONT = 0.2 
@@ -8,8 +8,8 @@ question_number = 0
 
 #Functions 
 def get_answer(question_reprint): 
-  """defines function to ensure all answers are intergers between 1 and 4"""
-  valid_input = False # A boolean which will loop until our condistion is met
+  """defines function to ensure all answers are integers  between 1 and 4"""
+  valid_input = False # A boolean which will loop until our condition is met
   while not valid_input:
     try: # this lets us test code for errors without breaking
       user_answer = int(input(question_reprint)) 
@@ -109,7 +109,7 @@ while year_level != "yes" and year_level != "no":
     print("good")
   
   if year_level == ("no"):
-    print("You are not the correct demograthic for this quiz \n")
+    print("You are not the correct demographic for this quiz \n")
     exit()
 
 #Main quiz code
@@ -130,10 +130,8 @@ while play_quiz==True:
   percent_correct= int(score/question_number *100)
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
-    
       play_quiz=play_again_func(user_name,score)      
         
   if score <4:
       print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
-      
       play_quiz=play_again_func(user_name,score)    
