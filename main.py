@@ -4,36 +4,52 @@ Eliza smith (21206@rangiorahigh.school.nz)
 Python basics quiz for year 9's
 '''
 
-score = 0
-import time 
-TIME_CONT = 0.5 
-question_number = 0
 
-#Defines a function to ensure all answers are integers between 1 and 4
+#Imports
+import time 
+
+#Variables
+score = 0
+
+#Constants
+TIME_CONT = 0.5 
+
+#Defines a function to ensure input is an integer between 1 and 4 (also known as sanitising the input)
 def get_answer(question_reprint): 
-  valid_input = False # A boolean which will loop until our condition is met
+  """
+  This function ensures input is an integer between 1 and 4 also known as sanitising the input, 
+  and will resend the same output until input requirements are met
+  
+  """
+  valid_input = False # A boolean which will loop until a condition is met
   while not valid_input:
-    try: # This lets us test code for errors without breaking
-      user_answer = int(input(question_reprint)) 
-      if user_answer > 0 and user_answer < 5:
+    try: # This lets the program test code for errors without breaking
+      new_user_answer = int(input(question_reprint)) 
+      if new_user_answer > 0 and new_user_answer < 5:
         valid_input = True
     except ValueError:
       print("Enter a number between 1 and 4 in answer(eg. 3) try again \n")
-  return user_answer
+  return new_user_answer
 
-def play_again_func(user_name,score,user_play_again):  
-  if user_play_again == ("no"):
-    print("Game Over, goodbye",user_name)
-    return False
-  if user_play_again== ("yes"):
-    if score >3:
-      print("Very well",user_name,"with your high score i'm sure you'll do well!")   
-    if score <4:
-      print("A good choice considering your score",user_name,"... \n")    
-    return True
-
+#Defines a function to ensure input is either yes or no (sanitising  the input)
+def play_again_func(user_name,score):
+  """
+  This function ensures input is a string of either yes or no also known as sanitising the input, 
+  the function will resend the same output until input requirements are met and score specific output is given 
+  
+  """
+  user_play_again=""
   while user_play_again != "yes" and user_play_again != "no":
-    user_play_again=input("Would you like to play again? (Yes or No) \n".lower())
+      user_play_again=input("Would you like to play again? (Yes or No) \n").lower()
+      if user_play_again == ("no"):
+        print("Game Over, goodbye",user_name)
+        return False
+      if user_play_again == ("yes"):
+        if score >3:
+          print("Very well",user_name,"with your high score i'm sure you'll do well!")   
+        if score <4:
+          print("A good choice considering your score",user_name,"... \n")    
+          return True
 
 #A list of the correct answers to quiz questions
 answer_list = ([1, 2, 4, 1, 3, 3])
@@ -94,19 +110,20 @@ Q6. Is Python indentation specific?
 '''
 ])
 
-#User information
+#User information including name and age demographic.
 print('''Hello, this is a quiz for year 9's with an interest in computer science. 
 The quiz will assess your level of knowledge regarding Python \n''')
 time.sleep (TIME_CONT)
 
 user_name = str(input("First of all, what is your name? \n"))
 
+#Ensures user is within a chosen demographic
 print("Thank you", user_name + ", \n")
 time.sleep (TIME_CONT)
 year_level = input(
   "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
 
-while year_level != "yes" and year_level != "no":
+while year_level != "yes" and year_level != "no": #Ensures user enters either yes or no as input
   year_level = input("Please answer with either Yes or No, are you a year 9? \n").lower()
   if year_level == ("yes"):
     print("good")
@@ -115,9 +132,11 @@ while year_level != "yes" and year_level != "no":
     print("You are not the correct demographic for this quiz \n")
     exit()
 
-#Main quiz code
+#Main quiz code, this iterates through question_list comparing answers against answer_list items in the 
+# same index as the question_list item until users input has been given on all items
 play_quiz=True 
 while play_quiz==True:
+  question_number = 0
   while question_number < len(question_list):
     user_answer = get_answer(question_list[question_number])
     if user_answer == answer_list[question_number]:
@@ -129,16 +148,17 @@ while play_quiz==True:
       print("score: [",score,"]")
     question_number += 1
 
-#Final results output and play again option
+#Final results output including percentages and score and a play again option through the #play_again_func function
   percent_correct= int(score/question_number *100)
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
-  user_play_again=input("Would you like to play again? (Yes or No) \n".lower())
-  play_quiz=play_again_func(user_name,score,user_play_again) 
-    
+      play_quiz=play_again_func(user_name,score)      
         
   if score <4:
-      print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")   
-      
-  user_play_again=input("Would you like to play again? (Yes or No) \n".lower())
-  play_quiz=play_again_func(user_name,score,user_play_again) 
+      print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
+      play_quiz=play_again_func(user_name,score)    
+
+
+
+
+
