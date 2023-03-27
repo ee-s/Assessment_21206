@@ -3,10 +3,10 @@
 #Phython basics quiz for year 9's
 score = 0
 import time 
-TIME_CONT = 0.1 
+TIME_CONT = 0.2 
 question_number = 0
-play_quiz=True 
 
+#Functions 
 def get_answer(question_reprint): 
   """defines function to ensure all answers are intergers between 1 and 4"""
   valid_input = False # A boolean which will loop until our condistion is met
@@ -33,6 +33,7 @@ def play_again_func(user_name,score):
           print("A good choice considering your score",user_name,"... \n")    
         return True
 
+#Lists 
 answer_list = ([1, 2, 4, 1, 3, 3])
 question_list = ([
 '''
@@ -90,8 +91,8 @@ Q6. Is Python indentation specific?
 '''
 ])
 
-print(
-  '''Hello, this is a quiz for year 9's with an interest in computer science. 
+#User information
+print('''Hello, this is a quiz for year 9's with an interest in computer science. 
 The quiz will assess your level of knowledge regarding Python \n''')
 time.sleep (TIME_CONT)
 
@@ -102,30 +103,30 @@ time.sleep (TIME_CONT)
 year_level = input(
   "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
 
-while play_quiz==True:  
+while year_level != "yes" and year_level != "no":
+  year_level = input("Please answer with either Yes or No, are you a year 9? \n").lower()
+  if year_level == ("yes"):
+    print("good")
   
-  while year_level != "yes" and year_level != "no":
-    year_level = input("Please answer with either Yes or No, are you a year 9? \n").lower()
-    if year_level == ("yes"):
-      print("good")
-    
-    if year_level == ("no"):
-      print("You are not the correct demograthic for this quiz \n")
-      exit()
-  
+  if year_level == ("no"):
+    print("You are not the correct demograthic for this quiz \n")
+    exit()
 
+#Main quiz code
+play_quiz=True 
+while play_quiz==True:
   while question_number < len(question_list):
     user_answer = get_answer(question_list[question_number])
     if user_answer == answer_list[question_number]:
       print("correct")
       score += 1
       print("score: [",score,"]\n")
-  
     else:
       print("incorrect")
       print("score: [",score,"]")
     question_number += 1
 
+#Final results output and play again option
   percent_correct= int(score/question_number *100)
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
