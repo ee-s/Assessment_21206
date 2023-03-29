@@ -4,7 +4,6 @@ Eliza smith (21206@rangiorahigh.school.nz)
 Python basics quiz for year 9's
 '''
 
-
 #Imports
 import time 
 
@@ -157,8 +156,3 @@ while play_quiz==True:
   if score <4:
       print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
       play_quiz=play_again_func(user_name,score)    
-
-
-
-
-
