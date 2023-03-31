@@ -123,9 +123,9 @@ year_level = input(
   "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
 
 while year_level != "yes" and year_level != "no": #Ensures user enters either yes or no as input
-  year_level = input("Please answer with either Yes or No, are you a year 9? \n").lower()
+  year_level = input("Please answer with either (Yes or No), are you a year 9? \n").lower()
   if year_level == ("yes"):
-    print("good")
+    print("Good")
   
   if year_level == ("no"):
     print("You are not the correct demographic for this quiz \n")
@@ -152,7 +152,9 @@ while play_quiz==True:
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
       play_quiz=play_again_func(user_name,score)      
-        
+      score = 0
+    
   if score <4:
-      print("You have completed the test it is advised to attempt this again due to you low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
-      play_quiz=play_again_func(user_name,score)    
+      print("You have completed the test, it is advised to attempt this again due to your low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
+      play_quiz=play_again_func(user_name,score)   
+      score = 0
