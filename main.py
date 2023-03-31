@@ -46,6 +46,7 @@ def play_again_func(user_name,score):
       if user_play_again == ("yes"):
         if score >3:
           print("Very well",user_name,"with your high score i'm sure you'll do well!")   
+          return True
         if score <4:
           print("A good choice considering your score",user_name,"... \n")    
           return True
@@ -136,6 +137,7 @@ while year_level != "yes" and year_level != "no": #Ensures user enters either ye
 play_quiz=True 
 while play_quiz==True:
   question_number = 0
+  score=0
   while question_number < len(question_list):
     user_answer = get_answer(question_list[question_number])
     if user_answer == answer_list[question_number]:
@@ -152,9 +154,9 @@ while play_quiz==True:
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
       play_quiz=play_again_func(user_name,score)      
-      score = 0
-    
+        
   if score <4:
       print("You have completed the test, it is advised to attempt this again due to your low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
       play_quiz=play_again_func(user_name,score)   
-      score = 0
+
+    
