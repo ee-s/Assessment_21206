@@ -8,7 +8,7 @@ Python basics quiz for year 9's
 import time 
 
 #Variables
-score = 0
+#All variables are loop dependent (are defined and changed within a loop)
 
 #Constants
 TIME_CONT = 0.5 
@@ -17,7 +17,7 @@ TIME_CONT = 0.5
 def get_answer(question_reprint): 
   """
   This function ensures input is an integer between 1 and 4 also known as sanitising the input, 
-  and will resend the same output until input requirements are met
+  and will resend the same output until input requirements are met.
   
   """
   valid_input = False # A boolean which will loop until a condition is met
@@ -30,11 +30,11 @@ def get_answer(question_reprint):
       print("Enter a number between 1 and 4 in answer(eg. 3) try again \n")
   return new_user_answer
 
-#Defines a function to ensure input is either yes or no (sanitising  the input)
+#Defines a function to ensure input is either yes or no (sanitising the input)
 def play_again_func(user_name,score):
   """
   This function ensures input is a string of either yes or no also known as sanitising the input, 
-  the function will resend the same output until input requirements are met and score specific output is given 
+  the function will resend the same output until input requirements are met and score specific output is given or game is ended.
   
   """
   user_play_again=""
@@ -116,13 +116,13 @@ The quiz will assess your level of knowledge regarding Python \n''')
 time.sleep (TIME_CONT)
 
 user_name = str(input("First of all, what is your name? \n"))
-
-#Ensures user is within a chosen demographic
 print("Thank you", user_name + ", \n")
 time.sleep (TIME_CONT)
+
 year_level = input(
   "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
 
+#Ensures user is within a chosen demographic
 while year_level != "yes" and year_level != "no": #Ensures user enters either yes or no as input
   year_level = input("Please answer with either (Yes or No), are you a year 9? \n").lower()
   if year_level == ("yes"):
@@ -132,8 +132,7 @@ while year_level != "yes" and year_level != "no": #Ensures user enters either ye
     print("You are not the correct demographic for this quiz \n")
     exit()
 
-#Main quiz code, this iterates through question_list comparing answers against answer_list items in the 
-# same index as the question_list item until users input has been given on all items
+#Main quiz code, this iterates through question_list comparing answers against answer_list items in the same index as the question_list item until users input has been given on all items
 play_quiz=True 
 while play_quiz==True:
   question_number = 0
@@ -158,5 +157,3 @@ while play_quiz==True:
   if score <4:
       print("You have completed the test, it is advised to attempt this again due to your low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
       play_quiz=play_again_func(user_name,score)   
-
-    
