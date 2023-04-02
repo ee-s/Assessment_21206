@@ -13,8 +13,24 @@ import time
 #Constants
 TIME_CONT = 0.5 
 
-#Defines a function to ensure input is an integer between 1 and 4 (also known as sanitising the input)
-def get_answer(question_reprint): 
+def year_level_func():
+  """
+  This function ensures input is a string of either yes or no also known as sanitising the input, 
+  the function will resend the same output until input requirements are met and score specific output is given or game is ended.
+  
+  """
+  year_level=""
+  while year_level != "yes" and year_level != "no":
+        year_level = input(
+    "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
+        if year_level == ("no"):
+         print("Game Over, goodbye",user_name)
+         exit() 
+        if year_level == ("yes"):
+          print("Great!")
+        
+    
+def get_vaild_answer(question_reprint): 
   """
   This function ensures input is an integer between 1 and 4 also known as sanitising the input, 
   and will resend the same output until input requirements are met.
@@ -30,7 +46,7 @@ def get_answer(question_reprint):
       print("Enter a number between 1 and 4 in answer(eg. 3) try again \n")
   return new_user_answer
 
-#Defines a function to ensure input is either yes or no (sanitising the input)
+
 def play_again_func(user_name,score):
   """
   This function ensures input is a string of either yes or no also known as sanitising the input, 
@@ -119,18 +135,8 @@ user_name = str(input("First of all, what is your name? \n"))
 print("Thank you", user_name + ", \n")
 time.sleep (TIME_CONT)
 
-year_level = input(
-  "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
-
 #Ensures user is within a chosen demographic
-while year_level != "yes" and year_level != "no": #Ensures user enters either yes or no as input
-  year_level = input("Please answer with either (Yes or No), are you a year 9? \n").lower()
-  if year_level == ("yes"):
-    print("Good")
-  
-  if year_level == ("no"):
-    print("You are not the correct demographic for this quiz \n")
-    exit()
+year_level_func()
 
 #Main quiz code, this iterates through question_list comparing answers against answer_list items in the same index as the question_list item until users input has been given on all items
 play_quiz=True 
@@ -138,7 +144,7 @@ while play_quiz==True:
   question_number = 0
   score=0
   while question_number < len(question_list):
-    user_answer = get_answer(question_list[question_number])
+    user_answer = get_vaild_answer(question_list[question_number])
     if user_answer == answer_list[question_number]:
       print("correct")
       score += 1
@@ -156,4 +162,4 @@ while play_quiz==True:
         
   if score <4:
       print("You have completed the test, it is advised to attempt this again due to your low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
-      play_quiz=play_again_func(user_name,score)   
+      play_quiz=play_again_func(user_name,score)
