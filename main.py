@@ -16,7 +16,7 @@ TIME_CONT = 0.5
 def year_level_func():
   """
   This function ensures input is a string of either yes or no also known as sanitising the input, 
-  the function will resend the same output until input requirements are met and score specific output is given or game is ended.
+  the function will resend the same output until input requirements are met.
   
   """
   year_level=""
@@ -43,7 +43,7 @@ def get_vaild_answer(question_reprint):
       if new_user_answer > 0 and new_user_answer < 5:
         valid_input = True
     except ValueError:
-      print("Enter a number between 1 and 4 in answer(eg. 3) try again \n")
+      print("Enter an integer between 1 and 4 in answer(eg. 3) try again \n")
   return new_user_answer
 
 
@@ -66,6 +66,7 @@ def play_again_func(user_name,score):
         if score <4:
           print("A good choice considering your score",user_name,"... \n")    
           return True
+
 
 #A list of the correct answers to quiz questions
 answer_list = ([1, 2, 4, 1, 3, 3])
