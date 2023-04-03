@@ -40,10 +40,18 @@ def get_vaild_answer(question_reprint):
   while not valid_input:
     try: # This lets the program test code for errors without breaking
       new_user_answer = int(input(question_reprint)) 
+      print("""You entered a wrong number. 
+Please enter an integer between 1 and 4 in answer (eg. 3)
+      
+Try again. \n""")
+
       if new_user_answer > 0 and new_user_answer < 5:
         valid_input = True
     except ValueError:
-      print("Enter an integer between 1 and 4 in answer(eg. 3) try again \n")
+      print("""You entered a letter or used the space bar. 
+Please enter an integer between 1 and 4 in answer (eg. 3)
+      
+Try again. \n""")
   return new_user_answer
 
 
@@ -57,7 +65,8 @@ def play_again_func(user_name,score):
   while user_play_again != "yes" and user_play_again != "no":
       user_play_again=input("Would you like to play again? (Yes or No) \n").lower()
       if user_play_again == ("no"):
-        print("Game Over, goodbye",user_name)
+        print(""" You are not the correct demographic for this quiz. 
+        Game Over, goodbye""",user_name)
         return False
       if user_play_again == ("yes"):
         if score >3:
@@ -127,6 +136,8 @@ Q6. Is Python indentation specific?
 '''
 ])
 
+#Start of program
+
 #User information including name and age demographic.
 print('''Hello, this is a quiz for year 9's with an interest in computer science. 
 The quiz will assess your level of knowledge regarding Python \n''')
@@ -144,8 +155,8 @@ play_quiz=True
 while play_quiz==True:
   question_number = 0
   score=0
-  while question_number < len(question_list):
-    user_answer = get_vaild_answer(question_list[question_number])
+  while question_number < len(question_list): #this makes the code run through for the length of questions making it more robust and flexable than using a set number 
+    user_answer = get_vaild_answer(question_list[question_number]) #prints output and checks if input is valid. if not vaild the code will ask for input again and if vaild code will accpet input.
     if user_answer == answer_list[question_number]:
       print("correct")
       score += 1
