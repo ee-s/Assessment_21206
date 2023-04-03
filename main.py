@@ -15,8 +15,7 @@ TIME_CONT = 0.5
 
 def year_level_func():
   """
-  This function ensures input is a string of either yes or no also known as sanitising the input, 
-  the function will resend the same output until input requirements are met.
+  This function prints a question and ensures input is a string of either yes or no also known as        sanitising the input, the function will resend the same output until input requirements are met.
   
   """
   year_level=""
@@ -31,10 +30,10 @@ Game Over, goodbye""",user_name)
           print("Great!")
         
     
-def get_vaild_answer(question_reprint): 
+def get_vaild_answer_func(question_reprint): 
   """
   This function ensures input is an integer between 1 and 4 also known as sanitising the input, 
-  and will resend the same output until input requirements are met.
+  and will resend error specific outputs until input requirements are met.
   
   """
   valid_input = False # A boolean which will loop until a condition is met
@@ -61,7 +60,7 @@ Try again. \n""")
 def play_again_func(user_name,score):
   """
   This function ensures input is a string of either yes or no also known as sanitising the input, 
-  the function will resend the same output until input requirements are met and score specific output is given or game is ended.
+  the function will resend the same output until input requirements are met and a score specific output is given or game is ended.
   
   """
   user_play_again=""
@@ -152,13 +151,13 @@ time.sleep (TIME_CONT)
 #Ensures user is within a chosen demographic
 year_level_func()
 
-#Main quiz code, this iterates through question_list comparing answers against answer_list items in the same index as the question_list item until users input has been given on all items
+#Main quiz code, this iterates through question_list comparing answers against answer_list items in the same index as the question_list item until users input has been given on all items. This is more robust and flexible than using a set number of iterations and further allows for questions to be changed, added or taken away easily
 play_quiz=True 
 while play_quiz==True:
   question_number = 0
   score=0
-  while question_number < len(question_list): #This makes the code receive input for the length of questions in the question list, this is more robust and flexible than using a set number 
-    user_answer = get_vaild_answer(question_list[question_number]) #This prints an output and checks if the input is valid. If not valid the code will ask for input again and if valid code will accept input.
+  while question_number < len(question_list): 
+    user_answer = get_vaild_answer_func(question_list[question_number]) #This prints an output and checks if the input is valid. If not valid the code will ask for input again and if valid code will accept input.
     if user_answer == answer_list[question_number]:
       print("correct")
       score += 1
@@ -168,7 +167,7 @@ while play_quiz==True:
       print("score: [",score,"]")
     question_number += 1
 
-#Final results output including percentages and score and a play again option through the #play_again_func function
+#Final results output including percentages, score and a play again option via a function
   percent_correct= int(score/question_number *100)
   if score >3:
       print("Well done you have completed the test, your score is",score,"out of",question_number,"questions, resulting in",percent_correct,"% of the test being answered correctly. \n")
