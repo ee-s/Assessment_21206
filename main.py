@@ -1,5 +1,5 @@
 '''
-27/03/23
+3/04/23
 Eliza smith (21206@rangiorahigh.school.nz)
 Python basics quiz for year 9's
 '''
@@ -41,11 +41,6 @@ def get_vaild_answer(question_reprint):
   while not valid_input:
     try: # This lets the program test code for errors without breaking
       new_user_answer = int(input(question_reprint)) 
-      print("""You entered a wrong number. 
-Please enter an integer between 1 and 4 in answer (eg. 3)
-      
-Try again. \n""")
-
       if new_user_answer > 0 and new_user_answer < 5:
         valid_input = True
     except ValueError:
@@ -54,7 +49,6 @@ Please enter an integer between 1 and 4 in answer (eg. 3)
       
 Try again. \n""")
   return new_user_answer
-
 
 def play_again_func(user_name,score):
   """
@@ -66,11 +60,11 @@ def play_again_func(user_name,score):
   while user_play_again != "yes" and user_play_again != "no":
       user_play_again=input("Would you like to play again? (Yes or No) \n").lower()
       if user_play_again == ("no"):
-           print("Game Over, goodbye",user_name)
-      return False
+        print("Game Over, goodbye",user_name)
+        return False
       if user_play_again == ("yes"):
         if score >3:
-          print("Very well",user_name,"with your high score i'm sure you'll do well!")   
+          print("Very well",user_name,"with your high score its likley you'll do well!")   
           return True
         if score <4:
           print("A good choice considering your score",user_name,"... \n")    
@@ -155,8 +149,8 @@ play_quiz=True
 while play_quiz==True:
   question_number = 0
   score=0
-  while question_number < len(question_list): #This makes the code recive input for the length of questions in the question list, this is more robust and flexable than using a set number 
-    user_answer = get_vaild_answer(question_list[question_number]) #This prints an output and checks if the input is valid. If not vaild the code will ask for input again and if vaild code will accpet input.
+  while question_number < len(question_list): #This makes the code receive input for the length of questions in the question list, this is more robust and flexible than using a set number 
+    user_answer = get_vaild_answer(question_list[question_number]) #This prints an output and checks if the input is valid. If not valid the code will ask for input again and if valid code will accept input.
     if user_answer == answer_list[question_number]:
       print("correct")
       score += 1
@@ -169,9 +163,9 @@ while play_quiz==True:
 #Final results output including percentages and score and a play again option through the #play_again_func function
   percent_correct= int(score/question_number *100)
   if score >3:
-      print("Well done you have completed the test, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
+      print("Well done you have completed the test, your score is",score,"out of",question_number,"questions, resulting in",percent_correct,"% of the test being answered correctly. \n")
       play_quiz=play_again_func(user_name,score)      
         
   if score <4:
-      print("You have completed the test, it is advised to attempt this again due to your low score, your score is",score,"out of",question_number,"questions. Resulting in",percent_correct,"% of the test being answered correctly. \n")
+      print("You have completed the test, it is advised to attempt this again due to your low score, your score is",score,"out of",question_number,"questions, resulting in",percent_correct,"% of the test being answered correctly. \n")
       play_quiz=play_again_func(user_name,score)
