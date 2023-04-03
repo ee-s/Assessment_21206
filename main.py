@@ -41,8 +41,16 @@ def get_vaild_answer(question_reprint):
   while not valid_input:
     try: # This lets the program test code for errors without breaking
       new_user_answer = int(input(question_reprint)) 
+     
       if new_user_answer > 0 and new_user_answer < 5:
         valid_input = True
+      
+      if new_user_answer < 1 or new_user_answer > 4:
+        print("""You entered the wrong number. 
+Please enter an integer between 1 and 4 in answer (eg. 3)
+      
+Try again. \n""")
+      
     except ValueError:
       print("""You did not enter an integer. 
 Please enter an integer between 1 and 4 in answer (eg. 3)
