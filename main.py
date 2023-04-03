@@ -24,8 +24,9 @@ def year_level_func():
         year_level = input(
     "One last question before we begin the test are you a year 9? (yes or no) \n").lower()
         if year_level == ("no"):
-         print("Game Over, goodbye",user_name)
-         exit() 
+          print("""You are not the correct demographic for this quiz. 
+Game Over, goodbye""",user_name)
+          exit()
         if year_level == ("yes"):
           print("Great!")
         
@@ -48,7 +49,7 @@ Try again. \n""")
       if new_user_answer > 0 and new_user_answer < 5:
         valid_input = True
     except ValueError:
-      print("""You entered a letter or used the space bar. 
+      print("""You did not enter an integer. 
 Please enter an integer between 1 and 4 in answer (eg. 3)
       
 Try again. \n""")
@@ -65,9 +66,8 @@ def play_again_func(user_name,score):
   while user_play_again != "yes" and user_play_again != "no":
       user_play_again=input("Would you like to play again? (Yes or No) \n").lower()
       if user_play_again == ("no"):
-        print(""" You are not the correct demographic for this quiz. 
-        Game Over, goodbye""",user_name)
-        return False
+           print("Game Over, goodbye",user_name)
+      return False
       if user_play_again == ("yes"):
         if score >3:
           print("Very well",user_name,"with your high score i'm sure you'll do well!")   
@@ -155,8 +155,8 @@ play_quiz=True
 while play_quiz==True:
   question_number = 0
   score=0
-  while question_number < len(question_list): #this makes the code run through for the length of questions making it more robust and flexable than using a set number 
-    user_answer = get_vaild_answer(question_list[question_number]) #prints output and checks if input is valid. if not vaild the code will ask for input again and if vaild code will accpet input.
+  while question_number < len(question_list): #This makes the code recive input for the length of questions in the question list, this is more robust and flexable than using a set number 
+    user_answer = get_vaild_answer(question_list[question_number]) #This prints an output and checks if the input is valid. If not vaild the code will ask for input again and if vaild code will accpet input.
     if user_answer == answer_list[question_number]:
       print("correct")
       score += 1
